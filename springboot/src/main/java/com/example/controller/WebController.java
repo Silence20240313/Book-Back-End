@@ -9,6 +9,9 @@ import com.example.service.EmployeeService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 @RestController
 public class WebController {
     @Resource
@@ -53,5 +56,21 @@ public class WebController {
             throw new CustomException("500","非法输入");
         }
         return Result.success();
+    }
+
+    @GetMapping("/barData")
+    public Result getBarData(){
+        Map<String,Object> map = new HashMap<>();
+        List<Employee> employeeList = employeeService.selectAll(null);
+        Set<String> deptNameSet = employeeList.stream().map(Employee::getDeptName).collect(Collectors.toSet());
+        map.put("dept",deptNameSet);  // 横轴数据
+        List<Long> countList = new ArrayList<>();
+        for(String deptName : deptNameSet){
+            // 统计这个部门下面的员工的数量
+            long count = employeeList.stream().filter(employee -> employee.getDeptName().equals(deptName)).count();
+            countList.add(count);
+        }
+        map.put("count",countList); // 纵轴数据(员工数量数据)
+        return Result.success(map);
     }
 }
