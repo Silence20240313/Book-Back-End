@@ -22,5 +22,6 @@ public interface ArticleMapper {
     @Select("select * from article where id = #{id}")
     Article selectById(Integer id);
 
-
+    @Select("select count(*) from article where time like '%${date}%'")
+    Integer selectCountByDate(String date);
 }
