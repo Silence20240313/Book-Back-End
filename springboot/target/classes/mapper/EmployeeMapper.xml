@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.EmployeeMapper">
+
+    <select id="selectAll"  resultType="com.example.entity.Employee">
+        select employee.*, dept.name as deptName from employee
+        left join dept on employee.dept_id = dept.id
+        <where>
+            <if test="name != null">employee.name like concat('%',#{name},'%')</if>
+        </where>
+        order by employee.id desc
+    </select>
+    <!--更新-->
+    <update id="updateById" parameterType="com.example.entity.Employee">
+        update `employee` set username = #{username},password = #{password},role = #{role},name = #{name},sex = #{sex},no = #{no},age = #{age},
+        description = #{description},dept_id = #{deptId},avatar = #{avatar}
+        where id = #{id}
+    </update>
+
+
+
+    <!--新增-->
+    <insert id="insert" parameterType="com.example.entity.Employee">
+        insert into `employee` (username,password,role,name,sex,no,age,description,dept_id,avatar)
+        values(#{username},#{password},#{role},#{name},#{sex},#{no},#{age},#{description},#{deptId},#{avatar})
+    </insert>
+
+    
+</mapper>
