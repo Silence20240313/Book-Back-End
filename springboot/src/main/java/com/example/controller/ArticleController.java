@@ -23,6 +23,9 @@ public class ArticleController {
     }
 
 
+
+
+
     // 批量删除数据
     @DeleteMapping("/deleteBatch")
     public Result deleteBatch(@RequestBody List<Integer> ids){
