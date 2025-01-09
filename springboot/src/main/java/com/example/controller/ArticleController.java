@@ -47,10 +47,6 @@ public class ArticleController {
     }
 
 
-
-
-
-
     // 根据id查询
     @GetMapping("/selectById/{id}")
     public Result selectById(@PathVariable Integer id){
