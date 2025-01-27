@@ -50,7 +50,7 @@ public class DeptController {
         return Result.success(dept);
     }
 
-    // 查询员工表的所有数据
+    // 查询部门表的所有数据
     @GetMapping("/selectAll")
     public Result selectAll(Dept dept){
         List<Dept> list = deptService.selectAll(dept);
