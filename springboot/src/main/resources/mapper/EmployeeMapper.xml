@@ -12,6 +12,7 @@
         </where>
         order by employee.id desc
     </select>
+
     <!--更新-->
     <update id="updateById" parameterType="com.example.entity.Employee">
         update `employee` set username = #{username},password = #{password},role = #{role},name = #{name},sex = #{sex},no = #{no},age = #{age},
