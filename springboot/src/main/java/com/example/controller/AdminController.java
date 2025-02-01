@@ -58,7 +58,6 @@ public class AdminController {
         return Result.success(list);
     }
 
-
     // 分页查询  pageNum:当前页   pageSize：每页的条数
     @GetMapping("/selectPage")
     public Result selectPage(Admin admin,
