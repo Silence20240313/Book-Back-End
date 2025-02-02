@@ -22,6 +22,7 @@ public class DeptController {
         return Result.success();
     }
 
+
     // 批量删除数据
     @DeleteMapping("/deleteBatch")
     public Result deleteBatch(@RequestBody List<Integer> ids){
