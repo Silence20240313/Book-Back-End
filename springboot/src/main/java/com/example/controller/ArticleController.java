@@ -15,6 +15,7 @@ public class ArticleController {
     @Resource
     private ArticleService articleService;
 
+
     // 删除单个数据
     @DeleteMapping("/deleteById/{id}")
     public Result deleteById(@PathVariable Integer id){
